@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Master Form Filler</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container">
+    <h2>Master Details Hub</h2>
+    
+    <div class="category">
+        <h3>1. Personal Details</h3>
+        <div class="grid-2">
+            <div class="form-group"><label>Name</label><input type="text" class="form-data" id="name" placeholder="Full Name"></div>
+            <div class="form-group"><label>DOB</label><input type="date" class="form-data" id="dob"></div>
+            <div class="form-group"><label>Father's Name</label><input type="text" class="form-data" id="fatherName"></div>
+            <div class="form-group"><label>Mother's Name</label><input type="text" class="form-data" id="motherName"></div>
+            <div class="form-group"><label>Gender</label><input type="text" class="form-data" id="gender" placeholder="Male/Female/Other"></div>
+            <div class="form-group"><label>Category</label><input type="text" class="form-data" id="category" placeholder="UR/OBC/SC/ST/EWS"></div>
+            <div class="form-group"><label>Blood Group</label><input type="text" class="form-data" id="bloodGroup" placeholder="e.g., O+"></div>
+            <div class="form-group"><label>Nationality</label><input type="text" class="form-data" id="nationality" placeholder="Indian"></div>
+            <div class="form-group"><label>Religion</label><input type="text" class="form-data" id="religion"></div>
+        </div>
+    </div>
+
+    <div class="category">
+        <h3>2. Address Details</h3>
+        <div class="form-group"><label>Full Address</label><input type="text" class="form-data" id="fullAddress" placeholder="Complete address for easy copy"></div>
+        <div class="grid-2">
+            <div class="form-group"><label>Vill/Town</label><input type="text" class="form-data" id="villTown"></div>
+            <div class="form-group"><label>P.O. (Post Office)</label><input type="text" class="form-data" id="postOffice"></div>
+            <div class="form-group"><label>P.S. (Police Station)</label><input type="text" class="form-data" id="policeStation"></div>
+            <div class="form-group"><label>District</label><input type="text" class="form-data" id="district"></div>
+            <div class="form-group"><label>PIN Code</label><input type="text" class="form-data" id="pinCode"></div>
+            <div class="form-group"><label>State</label><input type="text" class="form-data" id="state"></div>
+        </div>
+    </div>
+
+    <div class="category">
+        <h3>3. Contact, IDs & Bank</h3>
+        <div class="grid-2">
+            <div class="form-group"><label>Mobile 1</label><input type="tel" class="form-data" id="mob1"></div>
+            <div class="form-group"><label>Mobile 2</label><input type="tel" class="form-data" id="mob2"></div>
+            <div class="form-group"><label>Email 1</label><input type="email" class="form-data" id="email1"></div>
+            <div class="form-group"><label>Email 2</label><input type="email" class="form-data" id="email2"></div>
+            <div class="form-group"><label>Aadhaar Number</label><input type="text" class="form-data" id="aadhaarNo"></div>
+            <div class="form-group"><label>PAN Number</label><input type="text" class="form-data" id="panNo"></div>
+            <div class="form-group"><label>Voter/Passport/DL</label><input type="text" class="form-data" id="altId"></div>
+            <div class="form-group"><label>Bank Name & Branch</label><input type="text" class="form-data" id="bankName"></div>
+            <div class="form-group"><label>Bank A/C 1</label><input type="text" class="form-data" id="bankAc1"></div>
+            <div class="form-group"><label>Bank IFSC</label><input type="text" class="form-data" id="bankIfsc"></div>
+        </div>
+    </div>
+
+    <div class="category">
+        <h3>4. Academic Details</h3>
+        <h4>Class 10</h4>
+        <div class="grid-2">
+            <div class="form-group"><label>Board/Council</label><input type="text" class="form-data" id="board10"></div>
+            <div class="form-group"><label>School Name</label><input type="text" class="form-data" id="school10"></div>
+            <div class="form-group"><label>Reg No</label><input type="text" class="form-data" id="reg10"></div>
+            <div class="form-group"><label>Roll & No</label><input type="text" class="form-data" id="roll10"></div>
+            <div class="form-group"><label>Marks/Percentage</label><input type="text" class="form-data" id="marks10"></div>
+            <div class="form-group"><label>Year of Passing</label><input type="text" class="form-data" id="passYear10"></div>
+        </div>
+        <h4>Class 12</h4>
+        <div class="grid-2">
+            <div class="form-group"><label>Board/Council</label><input type="text" class="form-data" id="board12"></div>
+            <div class="form-group"><label>School Name</label><input type="text" class="form-data" id="school12"></div>
+            <div class="form-group"><label>Reg No</label><input type="text" class="form-data" id="reg12"></div>
+            <div class="form-group"><label>Marks/Percentage</label><input type="text" class="form-data" id="marks12"></div>
+            <div class="form-group"><label>Sem 3 Roll & No</label><input type="text" class="form-data" id="rollSem3"></div>
+            <div class="form-group"><label>Sem 4 Roll & No</label><input type="text" class="form-data" id="rollSem4"></div>
+            <div class="form-group"><label>Year of Passing</label><input type="text" class="form-data" id="passYear12"></div>
+        </div>
+    </div>
+
+    <div class="category">
+        <h3>5. Important Links</h3>
+        <div class="form-group"><label>Drive Wallet Link</label><input type="url" class="form-data" id="driveLink"></div>
+        <div class="form-group"><label>Passport Photo Link</label><input type="url" class="form-data" id="photoLink"></div>
+        <div class="form-group"><label>Signature Link</label><input type="url" class="form-data" id="sigLink"></div>
+        <div class="form-group"><label>Thumb Impression Link</label><input type="url" class="form-data" id="thumbLink"></div>
+        <div class="form-group"><label>DigiLocker Link</label><input type="url" class="form-data" id="digilockerLink"></div>
+    </div>
+
+    <div class="button-group sticky-bottom">
+        <button id="editBtn" class="btn btn-secondary" onclick="enableEdit()" style="display:none;">Edit Data</button>
+        <button id="saveBtn" class="btn btn-primary" onclick="saveData()">Save & Sync</button>
+    </div>
+    <div class="button-group">
+        <button class="btn btn-share" onclick="shareBlank()">Share Empty Form</button>
+        <button class="btn btn-danger" onclick="shareWithInfo()">Share MY Data</button>
+    </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
