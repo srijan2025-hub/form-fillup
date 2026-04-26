@@ -1,10 +1,28 @@
 const GOOGLE_SHEET_URL = "https://script.google.com/macros/s/AKfycbx6ggfbsrzzg4wv6cI7VyHidLVQOWQ_CnKStUUYJbxmM971A0R65MpfsBtSewZpiH17Xw/exec";
 const STORAGE_KEY = "masterFormStudentsDB"; 
+let currentProfileName = ""; // Tracks the currently active profile to fix renaming bugs
 
 document.addEventListener("DOMContentLoaded", () => {
     setupEnterKeyNavigation();
-    updateDropdown();
-    checkUrlParams();
+    
+    const db = getStudentsDB();
+    const studentNames = Object.keys(db);
+    const urlParams = new URLSearchParams(window.location.search);
+
+    if (urlParams.has('name')) {
+        // If opening a shared link, load that data
+        checkUrlParams();
+        updateDropdown(); 
+    } else if (studentNames.length > 0) {
+        // Automatically load the last viewed student so the page isn't confusingly blank
+        const lastStudent = studentNames[studentNames.length - 1];
+        updateDropdown(lastStudent);
+        switchStudent(); 
+    } else {
+        // Fresh start for a new user
+        updateDropdown();
+        clearForm();
+    }
 });
 
 // Skip to next text box when pressing Enter
@@ -69,6 +87,7 @@ function switchStudent() {
     const studentData = db[selectedName];
     
     if (studentData) {
+        currentProfileName = selectedName; // Set active tracker
         document.querySelectorAll('.form-data').forEach(input => {
             input.value = studentData[input.id] || "";
         });
@@ -78,6 +97,7 @@ function switchStudent() {
 }
 
 function clearForm() {
+    currentProfileName = ""; // Reset tracker for new student
     document.querySelectorAll('.form-data').forEach(input => {
         input.value = "";
     });
@@ -119,11 +139,17 @@ async function saveData() {
         payload[input.id] = input.value;
     });
 
-    // Save to DB
     let db = getStudentsDB();
+    
+    // If they renamed an existing profile, delete the old name key so we don't duplicate
+    if (currentProfileName && currentProfileName !== nameInput) {
+        delete db[currentProfileName];
+    }
+
     db[nameInput] = payload; 
     localStorage.setItem(STORAGE_KEY, JSON.stringify(db));
     
+    currentProfileName = nameInput; // Update tracker
     updateDropdown(nameInput);
 
     // Sync to Google
@@ -162,6 +188,7 @@ function checkUrlParams() {
             }
         });
         if(hasData) {
+            currentProfileName = ""; // Treat shared data as unsaved
             document.getElementById("studentSelector").value = ""; 
             lockForm();
         }
