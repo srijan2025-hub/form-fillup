@@ -15,50 +15,51 @@
         <select id="studentSelector" onchange="switchStudent()">
             <option value="">-- Add New Student --</option>
         </select>
-        <button class="btn btn-warning" onclick="clearForm()">➕ New</button>
+        <button class="btn btn-warning" onclick="clearForm()" title="Create New">➕ New</button>
+        <button class="btn btn-danger" id="deleteBtn" onclick="deleteProfile()" style="display:none;" title="Delete Profile">🗑️ Delete</button>
     </div>
     
     <div class="category">
         <h3>1. Personal Details</h3>
         <div class="grid-2">
-            <div class="form-group"><label>Name (Used to save profile)</label><div class="input-wrapper"><input type="text" class="form-data" id="name" placeholder="Full Name"><button class="copy-btn" onclick="copyInput(this, 'name')" title="Copy">📋</button></div></div>
-            <div class="form-group"><label>DOB</label><div class="input-wrapper"><input type="date" class="form-data" id="dob"><button class="copy-btn" onclick="copyInput(this, 'dob')" title="Copy">📋</button></div></div>
-            <div class="form-group"><label>Father's Name</label><div class="input-wrapper"><input type="text" class="form-data" id="fatherName"><button class="copy-btn" onclick="copyInput(this, 'fatherName')" title="Copy">📋</button></div></div>
-            <div class="form-group"><label>Mother's Name</label><div class="input-wrapper"><input type="text" class="form-data" id="motherName"><button class="copy-btn" onclick="copyInput(this, 'motherName')" title="Copy">📋</button></div></div>
-            <div class="form-group"><label>Gender</label><div class="input-wrapper"><input type="text" class="form-data" id="gender" placeholder="Male/Female/Other"><button class="copy-btn" onclick="copyInput(this, 'gender')" title="Copy">📋</button></div></div>
-            <div class="form-group"><label>Category</label><div class="input-wrapper"><input type="text" class="form-data" id="category" placeholder="UR/OBC/SC/ST/EWS"><button class="copy-btn" onclick="copyInput(this, 'category')" title="Copy">📋</button></div></div>
-            <div class="form-group"><label>Blood Group</label><div class="input-wrapper"><input type="text" class="form-data" id="bloodGroup" placeholder="e.g., O+"><button class="copy-btn" onclick="copyInput(this, 'bloodGroup')" title="Copy">📋</button></div></div>
-            <div class="form-group"><label>Nationality</label><div class="input-wrapper"><input type="text" class="form-data" id="nationality" placeholder="Indian"><button class="copy-btn" onclick="copyInput(this, 'nationality')" title="Copy">📋</button></div></div>
-            <div class="form-group"><label>Religion</label><div class="input-wrapper"><input type="text" class="form-data" id="religion"><button class="copy-btn" onclick="copyInput(this, 'religion')" title="Copy">📋</button></div></div>
+            <div class="form-group"><label>Name (Used to save profile)</label><div class="input-wrapper"><input type="text" class="form-data" id="name" placeholder="Full Name"><button class="copy-btn" onclick="copyInput(this, 'name')" title="Copy" tabindex="-1">📋</button></div></div>
+            <div class="form-group"><label>DOB</label><div class="input-wrapper"><input type="date" class="form-data" id="dob"><button class="copy-btn" onclick="copyInput(this, 'dob')" title="Copy" tabindex="-1">📋</button></div></div>
+            <div class="form-group"><label>Father's Name</label><div class="input-wrapper"><input type="text" class="form-data" id="fatherName"><button class="copy-btn" onclick="copyInput(this, 'fatherName')" title="Copy" tabindex="-1">📋</button></div></div>
+            <div class="form-group"><label>Mother's Name</label><div class="input-wrapper"><input type="text" class="form-data" id="motherName"><button class="copy-btn" onclick="copyInput(this, 'motherName')" title="Copy" tabindex="-1">📋</button></div></div>
+            <div class="form-group"><label>Gender</label><div class="input-wrapper"><input type="text" class="form-data" id="gender" placeholder="Male/Female/Other"><button class="copy-btn" onclick="copyInput(this, 'gender')" title="Copy" tabindex="-1">📋</button></div></div>
+            <div class="form-group"><label>Category</label><div class="input-wrapper"><input type="text" class="form-data" id="category" placeholder="UR/OBC/SC/ST/EWS"><button class="copy-btn" onclick="copyInput(this, 'category')" title="Copy" tabindex="-1">📋</button></div></div>
+            <div class="form-group"><label>Blood Group</label><div class="input-wrapper"><input type="text" class="form-data" id="bloodGroup" placeholder="e.g., O+"><button class="copy-btn" onclick="copyInput(this, 'bloodGroup')" title="Copy" tabindex="-1">📋</button></div></div>
+            <div class="form-group"><label>Nationality</label><div class="input-wrapper"><input type="text" class="form-data" id="nationality" placeholder="Indian"><button class="copy-btn" onclick="copyInput(this, 'nationality')" title="Copy" tabindex="-1">📋</button></div></div>
+            <div class="form-group"><label>Religion</label><div class="input-wrapper"><input type="text" class="form-data" id="religion"><button class="copy-btn" onclick="copyInput(this, 'religion')" title="Copy" tabindex="-1">📋</button></div></div>
         </div>
     </div>
 
     <div class="category">
         <h3>2. Address Details</h3>
-        <div class="form-group"><label>Full Address</label><div class="input-wrapper"><input type="text" class="form-data" id="fullAddress" placeholder="Complete address for easy copy"><button class="copy-btn" onclick="copyInput(this, 'fullAddress')" title="Copy">📋</button></div></div>
+        <div class="form-group"><label>Full Address</label><div class="input-wrapper"><input type="text" class="form-data" id="fullAddress" placeholder="Complete address for easy copy"><button class="copy-btn" onclick="copyInput(this, 'fullAddress')" title="Copy" tabindex="-1">📋</button></div></div>
         <div class="grid-2">
-            <div class="form-group"><label>Vill/Town</label><div class="input-wrapper"><input type="text" class="form-data" id="villTown"><button class="copy-btn" onclick="copyInput(this, 'villTown')" title="Copy">📋</button></div></div>
-            <div class="form-group"><label>P.O. (Post Office)</label><div class="input-wrapper"><input type="text" class="form-data" id="postOffice"><button class="copy-btn" onclick="copyInput(this, 'postOffice')" title="Copy">📋</button></div></div>
-            <div class="form-group"><label>P.S. (Police Station)</label><div class="input-wrapper"><input type="text" class="form-data" id="policeStation"><button class="copy-btn" onclick="copyInput(this, 'policeStation')" title="Copy">📋</button></div></div>
-            <div class="form-group"><label>District</label><div class="input-wrapper"><input type="text" class="form-data" id="district"><button class="copy-btn" onclick="copyInput(this, 'district')" title="Copy">📋</button></div></div>
-            <div class="form-group"><label>PIN Code</label><div class="input-wrapper"><input type="text" class="form-data" id="pinCode"><button class="copy-btn" onclick="copyInput(this, 'pinCode')" title="Copy">📋</button></div></div>
-            <div class="form-group"><label>State</label><div class="input-wrapper"><input type="text" class="form-data" id="state"><button class="copy-btn" onclick="copyInput(this, 'state')" title="Copy">📋</button></div></div>
+            <div class="form-group"><label>Vill/Town</label><div class="input-wrapper"><input type="text" class="form-data" id="villTown"><button class="copy-btn" onclick="copyInput(this, 'villTown')" title="Copy" tabindex="-1">📋</button></div></div>
+            <div class="form-group"><label>P.O. (Post Office)</label><div class="input-wrapper"><input type="text" class="form-data" id="postOffice"><button class="copy-btn" onclick="copyInput(this, 'postOffice')" title="Copy" tabindex="-1">📋</button></div></div>
+            <div class="form-group"><label>P.S. (Police Station)</label><div class="input-wrapper"><input type="text" class="form-data" id="policeStation"><button class="copy-btn" onclick="copyInput(this, 'policeStation')" title="Copy" tabindex="-1">📋</button></div></div>
+            <div class="form-group"><label>District</label><div class="input-wrapper"><input type="text" class="form-data" id="district"><button class="copy-btn" onclick="copyInput(this, 'district')" title="Copy" tabindex="-1">📋</button></div></div>
+            <div class="form-group"><label>PIN Code</label><div class="input-wrapper"><input type="text" class="form-data" id="pinCode"><button class="copy-btn" onclick="copyInput(this, 'pinCode')" title="Copy" tabindex="-1">📋</button></div></div>
+            <div class="form-group"><label>State</label><div class="input-wrapper"><input type="text" class="form-data" id="state"><button class="copy-btn" onclick="copyInput(this, 'state')" title="Copy" tabindex="-1">📋</button></div></div>
         </div>
     </div>
 
     <div class="category">
         <h3>3. Contact, IDs & Bank</h3>
         <div class="grid-2">
-            <div class="form-group"><label>Mobile 1</label><div class="input-wrapper"><input type="tel" class="form-data" id="mob1"><button class="copy-btn" onclick="copyInput(this, 'mob1')" title="Copy">📋</button></div></div>
-            <div class="form-group"><label>Mobile 2</label><div class="input-wrapper"><input type="tel" class="form-data" id="mob2"><button class="copy-btn" onclick="copyInput(this, 'mob2')" title="Copy">📋</button></div></div>
-            <div class="form-group"><label>Email 1</label><div class="input-wrapper"><input type="email" class="form-data" id="email1"><button class="copy-btn" onclick="copyInput(this, 'email1')" title="Copy">📋</button></div></div>
-            <div class="form-group"><label>Email 2</label><div class="input-wrapper"><input type="email" class="form-data" id="email2"><button class="copy-btn" onclick="copyInput(this, 'email2')" title="Copy">📋</button></div></div>
-            <div class="form-group"><label>Aadhaar Number</label><div class="input-wrapper"><input type="text" class="form-data" id="aadhaarNo"><button class="copy-btn" onclick="copyInput(this, 'aadhaarNo')" title="Copy">📋</button></div></div>
-            <div class="form-group"><label>PAN Number</label><div class="input-wrapper"><input type="text" class="form-data" id="panNo"><button class="copy-btn" onclick="copyInput(this, 'panNo')" title="Copy">📋</button></div></div>
-            <div class="form-group"><label>Voter/Passport/DL</label><div class="input-wrapper"><input type="text" class="form-data" id="altId"><button class="copy-btn" onclick="copyInput(this, 'altId')" title="Copy">📋</button></div></div>
-            <div class="form-group"><label>Bank Name & Branch</label><div class="input-wrapper"><input type="text" class="form-data" id="bankName"><button class="copy-btn" onclick="copyInput(this, 'bankName')" title="Copy">📋</button></div></div>
-            <div class="form-group"><label>Bank A/C 1</label><div class="input-wrapper"><input type="text" class="form-data" id="bankAc1"><button class="copy-btn" onclick="copyInput(this, 'bankAc1')" title="Copy">📋</button></div></div>
-            <div class="form-group"><label>Bank IFSC</label><div class="input-wrapper"><input type="text" class="form-data" id="bankIfsc"><button class="copy-btn" onclick="copyInput(this, 'bankIfsc')" title="Copy">📋</button></div></div>
+            <div class="form-group"><label>Mobile 1</label><div class="input-wrapper"><input type="tel" class="form-data" id="mob1"><button class="copy-btn" onclick="copyInput(this, 'mob1')" title="Copy" tabindex="-1">📋</button></div></div>
+            <div class="form-group"><label>Mobile 2</label><div class="input-wrapper"><input type="tel" class="form-data" id="mob2"><button class="copy-btn" onclick="copyInput(this, 'mob2')" title="Copy" tabindex="-1">📋</button></div></div>
+            <div class="form-group"><label>Email 1</label><div class="input-wrapper"><input type="email" class="form-data" id="email1"><button class="copy-btn" onclick="copyInput(this, 'email1')" title="Copy" tabindex="-1">📋</button></div></div>
+            <div class="form-group"><label>Email 2</label><div class="input-wrapper"><input type="email" class="form-data" id="email2"><button class="copy-btn" onclick="copyInput(this, 'email2')" title="Copy" tabindex="-1">📋</button></div></div>
+            <div class="form-group"><label>Aadhaar Number</label><div class="input-wrapper"><input type="text" class="form-data" id="aadhaarNo"><button class="copy-btn" onclick="copyInput(this, 'aadhaarNo')" title="Copy" tabindex="-1">📋</button></div></div>
+            <div class="form-group"><label>PAN Number</label><div class="input-wrapper"><input type="text" class="form-data" id="panNo"><button class="copy-btn" onclick="copyInput(this, 'panNo')" title="Copy" tabindex="-1">📋</button></div></div>
+            <div class="form-group"><label>Voter/Passport/DL</label><div class="input-wrapper"><input type="text" class="form-data" id="altId"><button class="copy-btn" onclick="copyInput(this, 'altId')" title="Copy" tabindex="-1">📋</button></div></div>
+            <div class="form-group"><label>Bank Name & Branch</label><div class="input-wrapper"><input type="text" class="form-data" id="bankName"><button class="copy-btn" onclick="copyInput(this, 'bankName')" title="Copy" tabindex="-1">📋</button></div></div>
+            <div class="form-group"><label>Bank A/C 1</label><div class="input-wrapper"><input type="text" class="form-data" id="bankAc1"><button class="copy-btn" onclick="copyInput(this, 'bankAc1')" title="Copy" tabindex="-1">📋</button></div></div>
+            <div class="form-group"><label>Bank IFSC</label><div class="input-wrapper"><input type="text" class="form-data" id="bankIfsc"><button class="copy-btn" onclick="copyInput(this, 'bankIfsc')" title="Copy" tabindex="-1">📋</button></div></div>
         </div>
     </div>
 
@@ -66,32 +67,32 @@
         <h3>4. Academic Details</h3>
         <h4>Class 10</h4>
         <div class="grid-2">
-            <div class="form-group"><label>Board/Council</label><div class="input-wrapper"><input type="text" class="form-data" id="board10"><button class="copy-btn" onclick="copyInput(this, 'board10')" title="Copy">📋</button></div></div>
-            <div class="form-group"><label>School Name</label><div class="input-wrapper"><input type="text" class="form-data" id="school10"><button class="copy-btn" onclick="copyInput(this, 'school10')" title="Copy">📋</button></div></div>
-            <div class="form-group"><label>Reg No</label><div class="input-wrapper"><input type="text" class="form-data" id="reg10"><button class="copy-btn" onclick="copyInput(this, 'reg10')" title="Copy">📋</button></div></div>
-            <div class="form-group"><label>Roll & No</label><div class="input-wrapper"><input type="text" class="form-data" id="roll10"><button class="copy-btn" onclick="copyInput(this, 'roll10')" title="Copy">📋</button></div></div>
-            <div class="form-group"><label>Marks/Percentage</label><div class="input-wrapper"><input type="text" class="form-data" id="marks10"><button class="copy-btn" onclick="copyInput(this, 'marks10')" title="Copy">📋</button></div></div>
-            <div class="form-group"><label>Year of Passing</label><div class="input-wrapper"><input type="text" class="form-data" id="passYear10"><button class="copy-btn" onclick="copyInput(this, 'passYear10')" title="Copy">📋</button></div></div>
+            <div class="form-group"><label>Board/Council</label><div class="input-wrapper"><input type="text" class="form-data" id="board10"><button class="copy-btn" onclick="copyInput(this, 'board10')" title="Copy" tabindex="-1">📋</button></div></div>
+            <div class="form-group"><label>School Name</label><div class="input-wrapper"><input type="text" class="form-data" id="school10"><button class="copy-btn" onclick="copyInput(this, 'school10')" title="Copy" tabindex="-1">📋</button></div></div>
+            <div class="form-group"><label>Reg No</label><div class="input-wrapper"><input type="text" class="form-data" id="reg10"><button class="copy-btn" onclick="copyInput(this, 'reg10')" title="Copy" tabindex="-1">📋</button></div></div>
+            <div class="form-group"><label>Roll & No</label><div class="input-wrapper"><input type="text" class="form-data" id="roll10"><button class="copy-btn" onclick="copyInput(this, 'roll10')" title="Copy" tabindex="-1">📋</button></div></div>
+            <div class="form-group"><label>Marks/Percentage</label><div class="input-wrapper"><input type="text" class="form-data" id="marks10"><button class="copy-btn" onclick="copyInput(this, 'marks10')" title="Copy" tabindex="-1">📋</button></div></div>
+            <div class="form-group"><label>Year of Passing</label><div class="input-wrapper"><input type="text" class="form-data" id="passYear10"><button class="copy-btn" onclick="copyInput(this, 'passYear10')" title="Copy" tabindex="-1">📋</button></div></div>
         </div>
         <h4>Class 12</h4>
         <div class="grid-2">
-            <div class="form-group"><label>Board/Council</label><div class="input-wrapper"><input type="text" class="form-data" id="board12"><button class="copy-btn" onclick="copyInput(this, 'board12')" title="Copy">📋</button></div></div>
-            <div class="form-group"><label>School Name</label><div class="input-wrapper"><input type="text" class="form-data" id="school12"><button class="copy-btn" onclick="copyInput(this, 'school12')" title="Copy">📋</button></div></div>
-            <div class="form-group"><label>Reg No</label><div class="input-wrapper"><input type="text" class="form-data" id="reg12"><button class="copy-btn" onclick="copyInput(this, 'reg12')" title="Copy">📋</button></div></div>
-            <div class="form-group"><label>Marks/Percentage</label><div class="input-wrapper"><input type="text" class="form-data" id="marks12"><button class="copy-btn" onclick="copyInput(this, 'marks12')" title="Copy">📋</button></div></div>
-            <div class="form-group"><label>Sem 3 Roll & No</label><div class="input-wrapper"><input type="text" class="form-data" id="rollSem3"><button class="copy-btn" onclick="copyInput(this, 'rollSem3')" title="Copy">📋</button></div></div>
-            <div class="form-group"><label>Sem 4 Roll & No</label><div class="input-wrapper"><input type="text" class="form-data" id="rollSem4"><button class="copy-btn" onclick="copyInput(this, 'rollSem4')" title="Copy">📋</button></div></div>
-            <div class="form-group"><label>Year of Passing</label><div class="input-wrapper"><input type="text" class="form-data" id="passYear12"><button class="copy-btn" onclick="copyInput(this, 'passYear12')" title="Copy">📋</button></div></div>
+            <div class="form-group"><label>Board/Council</label><div class="input-wrapper"><input type="text" class="form-data" id="board12"><button class="copy-btn" onclick="copyInput(this, 'board12')" title="Copy" tabindex="-1">📋</button></div></div>
+            <div class="form-group"><label>School Name</label><div class="input-wrapper"><input type="text" class="form-data" id="school12"><button class="copy-btn" onclick="copyInput(this, 'school12')" title="Copy" tabindex="-1">📋</button></div></div>
+            <div class="form-group"><label>Reg No</label><div class="input-wrapper"><input type="text" class="form-data" id="reg12"><button class="copy-btn" onclick="copyInput(this, 'reg12')" title="Copy" tabindex="-1">📋</button></div></div>
+            <div class="form-group"><label>Marks/Percentage</label><div class="input-wrapper"><input type="text" class="form-data" id="marks12"><button class="copy-btn" onclick="copyInput(this, 'marks12')" title="Copy" tabindex="-1">📋</button></div></div>
+            <div class="form-group"><label>Sem 3 Roll & No</label><div class="input-wrapper"><input type="text" class="form-data" id="rollSem3"><button class="copy-btn" onclick="copyInput(this, 'rollSem3')" title="Copy" tabindex="-1">📋</button></div></div>
+            <div class="form-group"><label>Sem 4 Roll & No</label><div class="input-wrapper"><input type="text" class="form-data" id="rollSem4"><button class="copy-btn" onclick="copyInput(this, 'rollSem4')" title="Copy" tabindex="-1">📋</button></div></div>
+            <div class="form-group"><label>Year of Passing</label><div class="input-wrapper"><input type="text" class="form-data" id="passYear12"><button class="copy-btn" onclick="copyInput(this, 'passYear12')" title="Copy" tabindex="-1">📋</button></div></div>
         </div>
     </div>
 
     <div class="category">
         <h3>5. Important Links</h3>
-        <div class="form-group"><label>Drive Wallet Link</label><div class="input-wrapper"><input type="url" class="form-data" id="driveLink"><button class="copy-btn" onclick="copyInput(this, 'driveLink')" title="Copy">📋</button></div></div>
-        <div class="form-group"><label>Passport Photo Link</label><div class="input-wrapper"><input type="url" class="form-data" id="photoLink"><button class="copy-btn" onclick="copyInput(this, 'photoLink')" title="Copy">📋</button></div></div>
-        <div class="form-group"><label>Signature Link</label><div class="input-wrapper"><input type="url" class="form-data" id="sigLink"><button class="copy-btn" onclick="copyInput(this, 'sigLink')" title="Copy">📋</button></div></div>
-        <div class="form-group"><label>Thumb Impression Link</label><div class="input-wrapper"><input type="url" class="form-data" id="thumbLink"><button class="copy-btn" onclick="copyInput(this, 'thumbLink')" title="Copy">📋</button></div></div>
-        <div class="form-group"><label>DigiLocker Link</label><div class="input-wrapper"><input type="url" class="form-data" id="digilockerLink"><button class="copy-btn" onclick="copyInput(this, 'digilockerLink')" title="Copy">📋</button></div></div>
+        <div class="form-group"><label>Drive Wallet Link</label><div class="input-wrapper"><input type="url" class="form-data" id="driveLink"><button class="copy-btn" onclick="copyInput(this, 'driveLink')" title="Copy" tabindex="-1">📋</button></div></div>
+        <div class="form-group"><label>Passport Photo Link</label><div class="input-wrapper"><input type="url" class="form-data" id="photoLink"><button class="copy-btn" onclick="copyInput(this, 'photoLink')" title="Copy" tabindex="-1">📋</button></div></div>
+        <div class="form-group"><label>Signature Link</label><div class="input-wrapper"><input type="url" class="form-data" id="sigLink"><button class="copy-btn" onclick="copyInput(this, 'sigLink')" title="Copy" tabindex="-1">📋</button></div></div>
+        <div class="form-group"><label>Thumb Impression Link</label><div class="input-wrapper"><input type="url" class="form-data" id="thumbLink"><button class="copy-btn" onclick="copyInput(this, 'thumbLink')" title="Copy" tabindex="-1">📋</button></div></div>
+        <div class="form-group"><label>DigiLocker Link</label><div class="input-wrapper"><input type="url" class="form-data" id="digilockerLink"><button class="copy-btn" onclick="copyInput(this, 'digilockerLink')" title="Copy" tabindex="-1">📋</button></div></div>
     </div>
 
     <div class="button-group sticky-bottom">
