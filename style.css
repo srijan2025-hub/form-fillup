@@ -21,12 +21,13 @@ h2 { text-align: center; color: #333; margin-top: 0;}
 /* Profile Manager Styles */
 .profile-manager {
     display: flex;
-    gap: 10px;
+    gap: 8px;
     background: #f1f3f5;
     padding: 12px;
     border-radius: 6px;
     margin-bottom: 20px;
     border: 1px solid #dee2e6;
+    align-items: center;
 }
 .profile-manager select {
     flex: 1;
@@ -60,12 +61,11 @@ input { flex: 1; padding: 10px; border: 1px solid #ccc; border-radius: 4px; box-
 input:focus { outline: 2px solid #007bff; border-color: transparent;}
 input:disabled { background-color: #f8f9fa; color: #6c757d; }
 
-/* UPGRADED: Unique, modern circular copy button */
 .copy-btn {
     background: linear-gradient(135deg, #6e8efb, #a777e3);
     color: white;
     border: none;
-    border-radius: 50%; /* Makes it a circle */
+    border-radius: 50%; 
     width: 36px;
     height: 36px;
     display: flex;
@@ -83,7 +83,7 @@ input:disabled { background-color: #f8f9fa; color: #6c757d; }
 }
 .copy-btn:active {
     transform: scale(0.95);
-    background: linear-gradient(135deg, #28a745, #20c997); /* Turns green when clicked */
+    background: linear-gradient(135deg, #28a745, #20c997); 
 }
 
 .button-group { display: flex; gap: 10px; margin-top: 15px; }
@@ -93,7 +93,8 @@ input:disabled { background-color: #f8f9fa; color: #6c757d; }
 .btn-secondary { background-color: #6c757d; color: white; }
 .btn-share { background-color: #28a745; color: white; }
 .btn-danger { background-color: #dc3545; color: white; }
-.btn-warning { background-color: #ffc107; color: #333; flex: 0.4; } /* For New Student btn */
+.btn-warning { background-color: #ffc107; color: #333; flex: 0.4; padding: 8px;} /* Adjusted for top bar */
+#deleteBtn { flex: 0.4; padding: 8px;}
 
 .sticky-bottom {
     position: sticky;
