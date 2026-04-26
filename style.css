@@ -16,7 +16,28 @@ body {
     max-width: 600px;
 }
 
-h2 { text-align: center; color: #333; }
+h2 { text-align: center; color: #333; margin-top: 0;}
+
+/* Profile Manager Styles */
+.profile-manager {
+    display: flex;
+    gap: 10px;
+    background: #f1f3f5;
+    padding: 12px;
+    border-radius: 6px;
+    margin-bottom: 20px;
+    border: 1px solid #dee2e6;
+}
+.profile-manager select {
+    flex: 1;
+    padding: 8px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+    font-weight: bold;
+    color: #333;
+}
+
 h3 { background: #007bff; color: white; padding: 10px; border-radius: 5px; font-size: 16px; margin-top: 25px; }
 h4 { color: #555; margin-bottom: 10px; border-bottom: 1px solid #ccc; padding-bottom: 5px;}
 
@@ -29,40 +50,50 @@ h4 { color: #555; margin-bottom: 10px; border-bottom: 1px solid #ccc; padding-bo
 .form-group { margin-bottom: 12px; }
 label { display: block; font-weight: bold; margin-bottom: 4px; color: #444; font-size: 13px; }
 
-/* NEW: Wrapper for input and copy button */
 .input-wrapper {
     display: flex;
     align-items: center;
-    gap: 5px;
+    gap: 8px;
 }
 
-input { flex: 1; padding: 8px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; font-size: 14px; width: 100%;}
+input { flex: 1; padding: 10px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; font-size: 14px; width: 100%;}
+input:focus { outline: 2px solid #007bff; border-color: transparent;}
 input:disabled { background-color: #f8f9fa; color: #6c757d; }
 
-/* NEW: Copy Button Styling */
+/* UPGRADED: Unique, modern circular copy button */
 .copy-btn {
-    background-color: #f8f9fa;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    padding: 6px 8px;
+    background: linear-gradient(135deg, #6e8efb, #a777e3);
+    color: white;
+    border: none;
+    border-radius: 50%; /* Makes it a circle */
+    width: 36px;
+    height: 36px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     cursor: pointer;
     font-size: 16px;
-    transition: background-color 0.2s;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
     flex-shrink: 0;
 }
 .copy-btn:hover {
-    background-color: #e2e6ea;
+    transform: scale(1.1);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
 }
 .copy-btn:active {
-    background-color: #d3d9df;
+    transform: scale(0.95);
+    background: linear-gradient(135deg, #28a745, #20c997); /* Turns green when clicked */
 }
 
 .button-group { display: flex; gap: 10px; margin-top: 15px; }
-.btn { flex: 1; padding: 12px; border: none; border-radius: 5px; cursor: pointer; font-weight: bold; }
+.btn { flex: 1; padding: 12px; border: none; border-radius: 5px; cursor: pointer; font-weight: bold; font-size: 14px; transition: opacity 0.2s;}
+.btn:hover { opacity: 0.9; }
 .btn-primary { background-color: #007bff; color: white; }
 .btn-secondary { background-color: #6c757d; color: white; }
 .btn-share { background-color: #28a745; color: white; }
 .btn-danger { background-color: #dc3545; color: white; }
+.btn-warning { background-color: #ffc107; color: #333; flex: 0.4; } /* For New Student btn */
 
 .sticky-bottom {
     position: sticky;
