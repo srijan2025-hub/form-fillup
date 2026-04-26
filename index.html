@@ -11,10 +11,17 @@
 <div class="container">
     <h2>Master Details Hub</h2>
     
+    <div class="profile-manager">
+        <select id="studentSelector" onchange="switchStudent()">
+            <option value="">-- Add New Student --</option>
+        </select>
+        <button class="btn btn-warning" onclick="clearForm()">➕ New</button>
+    </div>
+    
     <div class="category">
         <h3>1. Personal Details</h3>
         <div class="grid-2">
-            <div class="form-group"><label>Name</label><div class="input-wrapper"><input type="text" class="form-data" id="name" placeholder="Full Name"><button class="copy-btn" onclick="copyInput(this, 'name')" title="Copy">📋</button></div></div>
+            <div class="form-group"><label>Name (Used to save profile)</label><div class="input-wrapper"><input type="text" class="form-data" id="name" placeholder="Full Name"><button class="copy-btn" onclick="copyInput(this, 'name')" title="Copy">📋</button></div></div>
             <div class="form-group"><label>DOB</label><div class="input-wrapper"><input type="date" class="form-data" id="dob"><button class="copy-btn" onclick="copyInput(this, 'dob')" title="Copy">📋</button></div></div>
             <div class="form-group"><label>Father's Name</label><div class="input-wrapper"><input type="text" class="form-data" id="fatherName"><button class="copy-btn" onclick="copyInput(this, 'fatherName')" title="Copy">📋</button></div></div>
             <div class="form-group"><label>Mother's Name</label><div class="input-wrapper"><input type="text" class="form-data" id="motherName"><button class="copy-btn" onclick="copyInput(this, 'motherName')" title="Copy">📋</button></div></div>
@@ -88,12 +95,12 @@
     </div>
 
     <div class="button-group sticky-bottom">
-        <button id="editBtn" class="btn btn-secondary" onclick="enableEdit()" style="display:none;">Edit Data</button>
-        <button id="saveBtn" class="btn btn-primary" onclick="saveData()">Save & Sync</button>
+        <button id="editBtn" class="btn btn-secondary" onclick="enableEdit()" style="display:none;">✏️ Edit Data</button>
+        <button id="saveBtn" class="btn btn-primary" onclick="saveData()">💾 Save & Sync</button>
     </div>
     <div class="button-group">
-        <button class="btn btn-share" onclick="shareBlank()">Share Empty Form</button>
-        <button class="btn btn-danger" onclick="shareWithInfo()">Share MY Data</button>
+        <button class="btn btn-share" onclick="shareBlank()">📤 Share Empty Form</button>
+        <button class="btn btn-danger" onclick="shareWithInfo()">🚨 Share MY Data</button>
     </div>
 </div>
 
