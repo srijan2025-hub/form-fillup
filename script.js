@@ -17,10 +17,12 @@ function loadData() {
     if(hasData) lockForm();
 }
 
-function saveData() {
+// NEW: Async added to handle the network request properly
+async function saveData() {
     const allInputs = document.querySelectorAll('.form-data');
     let payload = { timestamp: new Date().toLocaleString() };
 
+    // Save to local device first
     allInputs.forEach(input => {
         const val = input.value;
         payload[input.id] = val;
@@ -28,16 +30,25 @@ function saveData() {
     });
 
     if(GOOGLE_SHEET_URL !== "YOUR_GOOGLE_WEB_APP_URL_HERE") {
-        fetch(GOOGLE_SHEET_URL, {
-            method: 'POST',
-            mode: 'no-cors',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(payload)
-        });
+        try {
+            // Await the fetch. This catches network errors (like no Wi-Fi)
+            await fetch(GOOGLE_SHEET_URL, {
+                method: 'POST',
+                mode: 'no-cors',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(payload)
+            });
+            alert("Data saved successfully to your device and synced!");
+        } catch (error) {
+            // This runs if the internet disconnects or the fetch fails entirely
+            console.error("Sync Error:", error);
+            alert("⚠️ Data saved to your device, but failed to sync online! Please check your internet connection.");
+        }
+    } else {
+        alert("Data saved locally!");
     }
 
     lockForm();
-    alert("Data saved successfully to your device and synced!");
 }
 
 function lockForm() {
@@ -50,6 +61,28 @@ function enableEdit() {
     document.querySelectorAll('.form-data').forEach(input => input.disabled = false);
     document.getElementById('saveBtn').style.display = "block";
     document.getElementById('editBtn').style.display = "none";
+}
+
+// NEW: Copy to Clipboard function
+function copyInput(buttonElement, inputId) {
+    const inputElement = document.getElementById(inputId);
+    
+    if (!inputElement.value) {
+        alert("Nothing to copy!");
+        return;
+    }
+
+    navigator.clipboard.writeText(inputElement.value).then(() => {
+        // Change icon to checkmark for 1.5 seconds
+        const originalText = buttonElement.innerText;
+        buttonElement.innerText = "✅";
+        setTimeout(() => {
+            buttonElement.innerText = originalText;
+        }, 1500);
+    }).catch(err => {
+        alert("Failed to copy! Your browser might not support this feature.");
+        console.error("Copy Error:", err);
+    });
 }
 
 function shareBlank() {
