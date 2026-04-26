@@ -1,5 +1,5 @@
 const GOOGLE_SHEET_URL = "https://script.google.com/macros/s/AKfycbx6ggfbsrzzg4wv6cI7VyHidLVQOWQ_CnKStUUYJbxmM971A0R65MpfsBtSewZpiH17Xw/exec";
-const STORAGE_KEY = "masterFormStudentsDB"; // The main key for all students
+const STORAGE_KEY = "masterFormStudentsDB"; 
 
 document.addEventListener("DOMContentLoaded", () => {
     setupEnterKeyNavigation();
@@ -7,44 +7,53 @@ document.addEventListener("DOMContentLoaded", () => {
     checkUrlParams();
 });
 
-// --- NEW: Enter Key Navigation ---
+// Skip to next text box when pressing Enter
 function setupEnterKeyNavigation() {
     const inputs = Array.from(document.querySelectorAll('.form-data'));
     inputs.forEach((input, index) => {
         input.addEventListener('keydown', function(event) {
             if (event.key === 'Enter') {
-                event.preventDefault(); // Stop default form submission/jumping
+                event.preventDefault(); 
                 const nextInput = inputs[index + 1];
                 if (nextInput && !nextInput.disabled) {
-                    nextInput.focus(); // Jump to next box
+                    nextInput.focus(); 
                 } else {
-                    input.blur(); // Remove focus if it's the last box
+                    input.blur(); 
                 }
             }
         });
     });
 }
 
-// --- NEW: Multi-Student Logic ---
 function getStudentsDB() {
     const db = localStorage.getItem(STORAGE_KEY);
     return db ? JSON.parse(db) : {};
 }
 
-function updateDropdown() {
+function updateDropdown(selectedName = "") {
     const db = getStudentsDB();
     const selector = document.getElementById("studentSelector");
     
-    // Keep the first default option, remove the rest
     selector.innerHTML = '<option value="">-- Add New Student --</option>';
     
-    // Populate dropdown with names of saved students
     Object.keys(db).forEach(studentName => {
         let option = document.createElement("option");
         option.value = studentName;
         option.textContent = studentName;
+        if(studentName === selectedName) option.selected = true;
         selector.appendChild(option);
     });
+
+    toggleDeleteButton(selectedName);
+}
+
+function toggleDeleteButton(name) {
+    const deleteBtn = document.getElementById('deleteBtn');
+    if (name && getStudentsDB()[name]) {
+        deleteBtn.style.display = "block";
+    } else {
+        deleteBtn.style.display = "none";
+    }
 }
 
 function switchStudent() {
@@ -52,7 +61,7 @@ function switchStudent() {
     const selectedName = selector.value;
     
     if (!selectedName) {
-        clearForm(); // If they select "Add New"
+        clearForm(); 
         return;
     }
 
@@ -63,7 +72,8 @@ function switchStudent() {
         document.querySelectorAll('.form-data').forEach(input => {
             input.value = studentData[input.id] || "";
         });
-        lockForm(); // Lock it after loading so they don't accidentally edit
+        toggleDeleteButton(selectedName);
+        lockForm(); 
     }
 }
 
@@ -72,11 +82,28 @@ function clearForm() {
         input.value = "";
     });
     document.getElementById("studentSelector").value = "";
+    toggleDeleteButton("");
     enableEdit();
     document.getElementById('name').focus();
 }
 
-// --- Modified Save Data Logic ---
+function deleteProfile() {
+    const selector = document.getElementById("studentSelector");
+    const selectedName = selector.value;
+    
+    if (!selectedName) return;
+
+    if (confirm(`⚠️ Are you sure you want to permanently delete the profile for "${selectedName}" from this device?`)) {
+        let db = getStudentsDB();
+        delete db[selectedName];
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(db));
+        
+        clearForm();
+        updateDropdown();
+        alert(`🗑️ Profile for ${selectedName} deleted successfully.`);
+    }
+}
+
 async function saveData() {
     const nameInput = document.getElementById('name').value.trim();
     if (!nameInput) {
@@ -88,21 +115,18 @@ async function saveData() {
     const allInputs = document.querySelectorAll('.form-data');
     let payload = { timestamp: new Date().toLocaleString() };
 
-    // Gather data
     allInputs.forEach(input => {
         payload[input.id] = input.value;
     });
 
-    // Save to Multi-Student Local Database
+    // Save to DB
     let db = getStudentsDB();
-    db[nameInput] = payload; // Uses the student's name as the ID
+    db[nameInput] = payload; 
     localStorage.setItem(STORAGE_KEY, JSON.stringify(db));
     
-    // Refresh Dropdown and select the newly saved student
-    updateDropdown();
-    document.getElementById("studentSelector").value = nameInput;
+    updateDropdown(nameInput);
 
-    // Sync to Google Sheets
+    // Sync to Google
     if(GOOGLE_SHEET_URL !== "YOUR_GOOGLE_WEB_APP_URL_HERE") {
         try {
             document.getElementById('saveBtn').innerText = "⏳ Syncing...";
@@ -117,7 +141,7 @@ async function saveData() {
             console.error("Sync Error:", error);
             alert(`⚠️ ${nameInput}'s data saved to device, but failed to sync online!`);
         } finally {
-            document.getElementById('saveBtn').innerText = "💾 Save & Sync";
+            document.getElementById('saveBtn').innerHTML = "💾 Save & Sync";
         }
     } else {
         alert("Data saved locally!");
@@ -126,7 +150,6 @@ async function saveData() {
     lockForm();
 }
 
-// Check URL Params if someone shared a link with data
 function checkUrlParams() {
     const urlParams = new URLSearchParams(window.location.search);
     if(urlParams.has('name')) {
@@ -138,7 +161,10 @@ function checkUrlParams() {
                 hasData = true;
             }
         });
-        if(hasData) lockForm();
+        if(hasData) {
+            document.getElementById("studentSelector").value = ""; 
+            lockForm();
+        }
     }
 }
 
