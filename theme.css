@@ -1,117 +1,162 @@
-/* Theme Switcher Styling */
+/* Theme Switcher Base Styling */
 .theme-switcher {
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    gap: 10px;
-    margin-bottom: 15px;
-    padding: 8px 12px;
-    background: #f8f9fa;
-    border-radius: 6px;
-    border: 1px solid #dee2e6;
+    display: flex; justify-content: flex-end; align-items: center; gap: 10px;
+    margin-bottom: 15px; padding: 10px; background: rgba(255,255,255,0.8);
+    border-radius: 8px; border: 1px solid #ddd;
 }
-.theme-switcher select {
-    padding: 5px;
-    border-radius: 4px;
-    border: 1px solid #ccc;
-    font-weight: bold;
-    cursor: pointer;
+.theme-switcher select { padding: 6px; border-radius: 4px; font-weight: bold; cursor: pointer; }
+
+/* =========================================
+   ✨ ANIMATION ENGINE
+   ========================================= */
+@keyframes bgGradientMove {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
 }
 
 /* =========================================
-   1. DARK MODE 🌙
+   ✨ GOOGLE AI NEON (Animated)
    ========================================= */
+body.theme-ai {
+    background: linear-gradient(-45deg, #0d1117, #1f1b3b, #2b113b, #112a3d);
+    background-size: 400% 400%;
+    animation: bgGradientMove 15s ease infinite;
+    color: #e6edf3;
+}
+body.theme-ai .container {
+    background: rgba(20, 20, 30, 0.4); backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.1); box-shadow: 0 0 30px rgba(138, 43, 226, 0.2); color: #fff;
+}
+body.theme-ai h2, body.theme-ai h4 { color: #fff; border-color: rgba(255,255,255,0.2); }
+body.theme-ai h3 {
+    background: linear-gradient(90deg, #4facfe, #00f2fe, #f093fb, #f5576c);
+    background-size: 300% 300%; animation: bgGradientMove 5s ease infinite;
+    color: #fff; border: none; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+body.theme-ai label { color: #a5d6ff; }
+body.theme-ai input { background: rgba(0, 0, 0, 0.5); color: #fff; border: 1px solid rgba(255, 255, 255, 0.2); }
+body.theme-ai input:focus { outline: none; border-color: #f093fb; box-shadow: 0 0 12px rgba(240, 147, 251, 0.4); }
+body.theme-ai input:disabled { background: rgba(0, 0, 0, 0.2); color: #888; }
+body.theme-ai .theme-switcher, body.theme-ai .profile-manager { background: rgba(0, 0, 0, 0.5); border: 1px solid rgba(255, 255, 255, 0.2); color: #fff; }
+body.theme-ai select { background: #1f1b3b; color: #fff; border: 1px solid #4facfe; }
+body.theme-ai .sticky-bottom { background: rgba(20, 20, 30, 0.8); backdrop-filter: blur(10px); border-top: 1px solid rgba(255,255,255,0.1); }
+body.theme-ai .copy-btn, body.theme-ai .btn-primary { background: linear-gradient(45deg, #4facfe, #f093fb); background-size: 200% 200%; animation: bgGradientMove 3s ease infinite; color: white; border: none; }
+
+/* =========================================
+   ✨ MOVING LAVA (Animated)
+   ========================================= */
+body.theme-lava {
+    background: linear-gradient(-45deg, #ff4e00, #ec9f05, #ff0000, #8b0000);
+    background-size: 400% 400%; animation: bgGradientMove 10s ease infinite; color: #fff;
+}
+body.theme-lava .container { background: rgba(25, 0, 0, 0.75); border: 1px solid #ff4e00; box-shadow: 0 0 40px rgba(255, 78, 0, 0.4); color: white; }
+body.theme-lava h2, body.theme-lava h4 { color: #ffca28; border-color: #ff4e00; }
+body.theme-lava h3 { background: #ff4e00; color: #fff; }
+body.theme-lava label { color: #ffca28; }
+body.theme-lava input { background: rgba(0, 0, 0, 0.6); color: #fff; border: 1px solid #ff4e00; }
+body.theme-lava input:focus { border-color: #ffca28; box-shadow: 0 0 10px #ffca28; }
+body.theme-lava .profile-manager, body.theme-lava .theme-switcher { background: rgba(0, 0, 0, 0.8); border-color: #ff4e00; color: #ffca28;}
+body.theme-lava select { background: #3e0000; color: #fff; border: 1px solid #ff4e00; }
+body.theme-lava .sticky-bottom { background: rgba(25, 0, 0, 0.9); border-top: 1px solid #ff4e00; }
+body.theme-lava .copy-btn, body.theme-lava .btn-primary { background: #ff4e00; color: white; }
+
+/* =========================================
+   ✨ DEEP GALAXY (Animated)
+   ========================================= */
+body.theme-galaxy {
+    background: linear-gradient(-45deg, #0f0c29, #302b63, #24243e, #0b0710);
+    background-size: 400% 400%; animation: bgGradientMove 20s ease infinite; color: #fff;
+}
+body.theme-galaxy .container { background: rgba(10, 10, 20, 0.85); border-radius: 20px; border: 1px solid #8e2de2; box-shadow: 0 0 20px rgba(142, 45, 226, 0.4); }
+body.theme-galaxy h2, body.theme-galaxy h4 { color: #d8b4fe; border-color: #4a00e0; }
+body.theme-galaxy h3 { background: linear-gradient(90deg, #8e2de2, #4a00e0); color: #fff; border-radius: 10px; }
+body.theme-galaxy label { color: #c084fc; }
+body.theme-galaxy input { background: #050510; color: #fff; border: 1px solid #8e2de2; border-radius: 8px;}
+body.theme-galaxy input:focus { border-color: #d8b4fe; box-shadow: 0 0 12px rgba(216, 180, 254, 0.5); }
+body.theme-galaxy .profile-manager, body.theme-galaxy .theme-switcher { background: #050510; border-color: #8e2de2; color: #c084fc;}
+body.theme-galaxy select { background: #1a1025; color: #fff; border-color: #8e2de2; }
+body.theme-galaxy .sticky-bottom { background: rgba(10, 10, 20, 0.95); border-top: 1px solid #4a00e0; }
+body.theme-galaxy .copy-btn, body.theme-galaxy .btn-primary { background: linear-gradient(135deg, #8e2de2, #4a00e0); color: white; }
+
+/* =========================================
+   🌸 CHERRY BLOSSOM
+   ========================================= */
+body.theme-cherry { background-color: #ffe4e1; }
+body.theme-cherry .container { background: #fffcfc; border: 2px solid #ffb7c5; border-radius: 20px; box-shadow: 0 10px 20px rgba(255, 183, 197, 0.3); }
+body.theme-cherry h2, body.theme-cherry h4 { color: #d87093; border-color: #ffb7c5; }
+body.theme-cherry h3 { background: #ffb7c5; color: #fff; border-radius: 20px; text-align: center; }
+body.theme-cherry label { color: #db7093; }
+body.theme-cherry input { background: #fff; border: 1px solid #ffc0cb; border-radius: 10px; color: #555; }
+body.theme-cherry input:focus { border-color: #ff69b4; box-shadow: 0 0 8px rgba(255, 105, 180, 0.3); }
+body.theme-cherry .profile-manager, body.theme-cherry .theme-switcher { background: #fff0f5; border-color: #ffb7c5; color: #d87093;}
+body.theme-cherry .copy-btn, body.theme-cherry .btn-primary { background: #ffb7c5; color: white; border-radius: 15px;}
+
+/* =========================================
+   🧛 GOTHIC BLOOD
+   ========================================= */
+body.theme-vampire { background-color: #050505; color: #d3d3d3; }
+body.theme-vampire .container { background: #111; border: 1px solid #8b0000; box-shadow: 0 0 15px rgba(139, 0, 0, 0.5); }
+body.theme-vampire h2, body.theme-vampire h4 { color: #8b0000; border-color: #330000; font-family: Georgia, serif; }
+body.theme-vampire h3 { background: #8b0000; color: #fff; border: 1px solid #ff0000; }
+body.theme-vampire label { color: #b22222; }
+body.theme-vampire input { background: #000; color: #ffcccc; border: 1px solid #550000; }
+body.theme-vampire input:focus { border-color: #ff0000; box-shadow: 0 0 8px #ff0000; }
+body.theme-vampire .profile-manager, body.theme-vampire .theme-switcher { background: #0a0a0a; border-color: #8b0000; color: #ffcccc;}
+body.theme-vampire select { background: #000; color: #fff; border-color: #550000; }
+body.theme-vampire .sticky-bottom { background: #111; border-top: 1px solid #8b0000; }
+body.theme-vampire .copy-btn, body.theme-vampire .btn-primary { background: #8b0000; color: white; border-radius: 0; }
+
+/* =========================================
+   AESTHETIC & CLASSIC THEMES (Maintained from previous)
+   ========================================= */
+body.theme-glass { background: linear-gradient(45deg, #ff9a9e 0%, #fad0c4 99%, #fad0c4 100%); background-attachment: fixed; }
+body.theme-glass .container { background: rgba(255, 255, 255, 0.2); backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px); border: 1px solid rgba(255, 255, 255, 0.3); box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37); }
+body.theme-glass h3 { background: rgba(255,255,255,0.4); color: #444; border: 1px solid rgba(255,255,255,0.5); }
+body.theme-glass input { background: rgba(255,255,255,0.3); border: none; }
+
+body.theme-clay { background-color: #f0f4f8; }
+body.theme-clay .container { background: #f0f4f8; border-radius: 30px; box-shadow: 20px 20px 60px #ccdbe8, -20px -20px 60px #ffffff; border: none; }
+body.theme-clay input { border-radius: 15px; background: #f0f4f8; box-shadow: inset 6px 6px 12px #ccdbe8, inset -6px -6px 12px #ffffff; border: none; }
+body.theme-clay .copy-btn { border-radius: 12px; box-shadow: 6px 6px 12px #ccdbe8, -6px -6px 12px #ffffff; }
+
+body.theme-nordic { background-color: #f8f9fa; color: #2d3436; }
+body.theme-nordic .container { border: 3px solid #2d3436; border-radius: 0; box-shadow: 10px 10px 0px #2d3436; }
+body.theme-nordic h3 { background: #2d3436; border-radius: 0; }
+body.theme-nordic .copy-btn { background: #2d3436; border-radius: 0; }
+
+body.theme-retro { background-color: #2b0035; font-family: 'Courier New', monospace; }
+body.theme-retro .container { background: #1a001f; border: 4px solid #ff00ff; box-shadow: 5px 5px 0px #00ffff; }
+body.theme-retro h2, body.theme-retro h4 { color: #ff00ff; text-shadow: 2px 2px #00ffff; }
+body.theme-retro h3 { background: #ff00ff; color: #fff; text-transform: uppercase; }
+body.theme-retro input { background: #000; color: #00ff00; border: 2px solid #00ffff; }
+
+body.theme-luxury { background-color: #0c0c0c; }
+body.theme-luxury .container { background: #161616; border: 1px solid #d4af37; box-shadow: 0 0 20px rgba(212, 175, 55, 0.2); }
+body.theme-luxury h2, body.theme-luxury h4 { color: #d4af37; }
+body.theme-luxury h3 { background: linear-gradient(to right, #bf953f, #fcf6ba, #b38728); color: #000; font-weight: 900; }
+body.theme-luxury .copy-btn { background: #d4af37; color: #000; }
+body.theme-luxury input { border: 1px solid #333; color: #fcf6ba; background: #1a1a1a; }
+
 body.theme-dark { background-color: #121212; }
-body.theme-dark .container { background: #1e1e1e; box-shadow: 0 4px 15px rgba(0,0,0,0.5); border: none; }
-body.theme-dark h2, body.theme-dark h4 { color: #f1f1f1; border-color: #444; }
-body.theme-dark label { color: #ccc; }
-body.theme-dark input { background-color: #2c2c2c; color: #fff; border: 1px solid #444; }
-body.theme-dark input:disabled { background-color: #1a1a1a; color: #777; }
-body.theme-dark .profile-manager { background: #2c2c2c; border-color: #444; }
-body.theme-dark .profile-manager select { background: #1e1e1e; color: #fff; border-color: #555; }
-body.theme-dark .theme-switcher { background: #2c2c2c; border-color: #444; color: #fff;}
-body.theme-dark .theme-switcher select { background: #1e1e1e; color: #fff; }
-body.theme-dark .sticky-bottom { background: #1e1e1e; border-color: #444; }
+body.theme-dark .container { background: #1e1e1e; color: white; border: none; }
+body.theme-dark h3 { background: #333; }
+body.theme-dark input { background: #2c2c2c; color: white; border-color: #444; }
 
-/* =========================================
-   2. OCEAN THEME 🌊
-   ========================================= */
-body.theme-ocean { background-color: #e0f7fa; }
-body.theme-ocean .container { background: #ffffff; border: 2px solid #b2ebf2; }
-body.theme-ocean h3 { background: #0097a7; }
-body.theme-ocean h2 { color: #006064; }
-body.theme-ocean input:focus { outline: 2px solid #0097a7; }
-body.theme-ocean .btn-primary { background-color: #0097a7; }
-body.theme-ocean .copy-btn { background: linear-gradient(135deg, #4dd0e1, #00acc1); }
-
-/* =========================================
-   3. HACKER THEME 💻
-   ========================================= */
-body.theme-hacker { background-color: #000000; font-family: "Courier New", Courier, monospace;}
-body.theme-hacker .container { background: #0a0a0a; border: 1px solid #00ff00; box-shadow: 0 0 10px #00ff00; }
-body.theme-hacker h2, body.theme-hacker h4 { color: #00ff00; border-color: #005500; }
-body.theme-hacker h3 { background: #004400; color: #00ff00; border: 1px solid #00ff00; }
-body.theme-hacker label { color: #00cc00; }
-body.theme-hacker input { background-color: #000; color: #00ff00; border: 1px solid #005500; font-family: "Courier New"; }
-body.theme-hacker input:focus { outline: 2px solid #00ff00; }
-body.theme-hacker input:disabled { background-color: #050505; color: #005500; }
-body.theme-hacker .profile-manager, body.theme-hacker .theme-switcher { background: #050505; border-color: #005500; color: #00ff00;}
-body.theme-hacker .profile-manager select, body.theme-hacker .theme-switcher select { background: #000; color: #00ff00; border-color: #00ff00;}
-body.theme-hacker .sticky-bottom { background: #0a0a0a; border-color: #005500; }
-body.theme-hacker .btn-primary { background-color: #00aa00; color: #000;}
-body.theme-hacker .btn-secondary { background-color: #444; color: #fff; }
-body.theme-hacker .copy-btn { background: #00aa00; border-radius: 4px; color: #000;}
-
-/* =========================================
-   4. SUNSET THEME 🌅
-   ========================================= */
-body.theme-sunset { background: linear-gradient(to right, #ff7e5f, #feb47b); background-attachment: fixed;}
-body.theme-sunset .container { background: #fffcf9; border-radius: 12px; border: none;}
-body.theme-sunset h3 { background: linear-gradient(to right, #ff512f, #dd2476); }
-body.theme-sunset h2 { color: #d81b60; }
-body.theme-sunset .copy-btn { background: linear-gradient(135deg, #ff512f, #f09819); }
-body.theme-sunset .btn-primary { background: linear-gradient(to right, #ff512f, #dd2476); border: none;}
-
-/* =========================================
-   5. NEON CYBERPUNK 🟣
-   ========================================= */
 body.theme-neon { background-color: #0d0221; }
-body.theme-neon .container { background: #160f29; border: 1px solid #ff00ff; box-shadow: 0 0 15px #ff00ff; color: #00ffff;}
-body.theme-neon h2, body.theme-neon h4 { color: #00ffff; border-color: #ff00ff; }
-body.theme-neon h3 { background: #261c3a; color: #ff00ff; border: 1px solid #00ffff; box-shadow: inset 0 0 10px rgba(0,255,255,0.2);}
-body.theme-neon label { color: #ffeb3b; }
-body.theme-neon input { background-color: #0a0514; color: #fff; border: 1px solid #ff00ff; }
-body.theme-neon input:focus { outline: 2px solid #00ffff; box-shadow: 0 0 8px #00ffff;}
-body.theme-neon input:disabled { background-color: #1a1a2e; color: #888; border-color: #444;}
-body.theme-neon .profile-manager, body.theme-neon .theme-switcher { background: #0a0514; border-color: #ff00ff; color: #00ffff;}
-body.theme-neon .profile-manager select, body.theme-neon .theme-switcher select { background: #160f29; color: #00ffff; border-color: #00ffff;}
-body.theme-neon .sticky-bottom { background: #160f29; border-top: 1px solid #ff00ff; }
-body.theme-neon .btn-primary { background-color: #ff00ff; color: #fff; box-shadow: 0 0 10px #ff00ff;}
-body.theme-neon .copy-btn { background: #00ffff; color: #000; border-radius: 4px; box-shadow: 0 0 8px #00ffff;}
+body.theme-neon .container { background: #160f29; border: 1px solid #ff00ff; box-shadow: 0 0 15px #ff00ff; }
+body.theme-neon h2, body.theme-neon h4 { color: #00ffff; }
+body.theme-neon h3 { background: #ff00ff; color: white; }
 
-/* =========================================
-   6. FOREST RETREAT 🌲
-   ========================================= */
+body.theme-ocean { background-color: #e0f7fa; }
+body.theme-ocean h3 { background: #0097a7; }
+
+body.theme-sunset { background: linear-gradient(to right, #ff7e5f, #feb47b); }
+body.theme-sunset h3 { background: #ff512f; }
+
 body.theme-forest { background-color: #2c3e2d; }
-body.theme-forest .container { background: #fdfbf7; border-top: 6px solid #4a7c59; }
-body.theme-forest h2 { color: #2c3e2d; }
-body.theme-forest h3 { background: #4a7c59; color: white; }
-body.theme-forest label { color: #4a7c59; }
-body.theme-forest input:focus { outline: 2px solid #4a7c59; }
-body.theme-forest .profile-manager, body.theme-forest .theme-switcher { background: #e8ede9; border-color: #cdd9d0; }
-body.theme-forest .btn-primary { background-color: #4a7c59; }
-body.theme-forest .copy-btn { background: #6b8e23; border-radius: 8px;}
+body.theme-forest h3 { background: #4a7c59; }
 
-/* =========================================
-   7. COFFEE SHOP ☕
-   ========================================= */
 body.theme-coffee { background-color: #dfd3c3; }
-body.theme-coffee .container { background: #f8ede3; border: 1px solid #c5a880; box-shadow: 5px 5px 15px rgba(139, 115, 85, 0.2); }
-body.theme-coffee h2, body.theme-coffee h4 { color: #5e4b3c; border-color: #c5a880; }
-body.theme-coffee h3 { background: #8d6e63; color: #fff; }
-body.theme-coffee label { color: #795548; }
-body.theme-coffee input { border: 1px solid #c5a880; background: #fffcf9; color: #3e2723;}
-body.theme-coffee input:focus { outline: 2px solid #8d6e63; }
-body.theme-coffee .profile-manager, body.theme-coffee .theme-switcher { background: #dfd3c3; border-color: #c5a880; color: #5e4b3c;}
-body.theme-coffee .btn-primary { background-color: #6d4c41; }
-body.theme-coffee .copy-btn { background: #a1887f; }
+body.theme-coffee h3 { background: #8d6e63; }
+a
