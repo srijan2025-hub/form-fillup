@@ -5,6 +5,7 @@ body {
     justify-content: center;
     padding: 10px;
     margin: 0;
+    transition: background-color 0.3s ease;
 }
 
 .container {
@@ -14,11 +15,11 @@ body {
     box-shadow: 0 4px 15px rgba(0,0,0,0.1);
     width: 100%;
     max-width: 600px;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
 }
 
 h2 { text-align: center; color: #333; margin-top: 0;}
 
-/* Profile Manager Styles */
 .profile-manager {
     display: flex;
     gap: 8px;
@@ -93,7 +94,7 @@ input:disabled { background-color: #f8f9fa; color: #6c757d; }
 .btn-secondary { background-color: #6c757d; color: white; }
 .btn-share { background-color: #28a745; color: white; }
 .btn-danger { background-color: #dc3545; color: white; }
-.btn-warning { background-color: #ffc107; color: #333; flex: 0.4; padding: 8px;} /* Adjusted for top bar */
+.btn-warning { background-color: #ffc107; color: #333; flex: 0.4; padding: 8px;} 
 #deleteBtn { flex: 0.4; padding: 8px;}
 
 .sticky-bottom {
