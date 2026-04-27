@@ -1,8 +1,9 @@
 const GOOGLE_SHEET_URL = "https://script.google.com/macros/s/AKfycbx6ggfbsrzzg4wv6cI7VyHidLVQOWQ_CnKStUUYJbxmM971A0R65MpfsBtSewZpiH17Xw/exec";
 const STORAGE_KEY = "masterFormStudentsDB"; 
-let currentProfileName = ""; // Tracks the currently active profile to fix renaming bugs
+let currentProfileName = ""; 
 
 document.addEventListener("DOMContentLoaded", () => {
+    injectCopyButtons(); // Automatically creates all copy buttons!
     setupEnterKeyNavigation();
     
     const db = getStudentsDB();
@@ -10,22 +11,34 @@ document.addEventListener("DOMContentLoaded", () => {
     const urlParams = new URLSearchParams(window.location.search);
 
     if (urlParams.has('name')) {
-        // If opening a shared link, load that data
         checkUrlParams();
         updateDropdown(); 
     } else if (studentNames.length > 0) {
-        // Automatically load the last viewed student so the page isn't confusingly blank
         const lastStudent = studentNames[studentNames.length - 1];
         updateDropdown(lastStudent);
         switchStudent(); 
     } else {
-        // Fresh start for a new user
         updateDropdown();
         clearForm();
     }
 });
 
-// Skip to next text box when pressing Enter
+// Dynamic generation of copy buttons to keep HTML clean
+function injectCopyButtons() {
+    document.querySelectorAll('.input-wrapper').forEach(wrapper => {
+        const input = wrapper.querySelector('input');
+        if (input) {
+            const btn = document.createElement('button');
+            btn.className = 'copy-btn';
+            btn.title = 'Copy';
+            btn.tabIndex = -1;
+            btn.innerText = '📋';
+            btn.onclick = function() { copyInput(this, input.id); };
+            wrapper.appendChild(btn);
+        }
+    });
+}
+
 function setupEnterKeyNavigation() {
     const inputs = Array.from(document.querySelectorAll('.form-data'));
     inputs.forEach((input, index) => {
@@ -87,7 +100,7 @@ function switchStudent() {
     const studentData = db[selectedName];
     
     if (studentData) {
-        currentProfileName = selectedName; // Set active tracker
+        currentProfileName = selectedName; 
         document.querySelectorAll('.form-data').forEach(input => {
             input.value = studentData[input.id] || "";
         });
@@ -97,7 +110,7 @@ function switchStudent() {
 }
 
 function clearForm() {
-    currentProfileName = ""; // Reset tracker for new student
+    currentProfileName = ""; 
     document.querySelectorAll('.form-data').forEach(input => {
         input.value = "";
     });
@@ -141,7 +154,6 @@ async function saveData() {
 
     let db = getStudentsDB();
     
-    // If they renamed an existing profile, delete the old name key so we don't duplicate
     if (currentProfileName && currentProfileName !== nameInput) {
         delete db[currentProfileName];
     }
@@ -149,10 +161,9 @@ async function saveData() {
     db[nameInput] = payload; 
     localStorage.setItem(STORAGE_KEY, JSON.stringify(db));
     
-    currentProfileName = nameInput; // Update tracker
+    currentProfileName = nameInput; 
     updateDropdown(nameInput);
 
-    // Sync to Google
     if(GOOGLE_SHEET_URL !== "YOUR_GOOGLE_WEB_APP_URL_HERE") {
         try {
             document.getElementById('saveBtn').innerText = "⏳ Syncing...";
@@ -188,7 +199,7 @@ function checkUrlParams() {
             }
         });
         if(hasData) {
-            currentProfileName = ""; // Treat shared data as unsaved
+            currentProfileName = ""; 
             document.getElementById("studentSelector").value = ""; 
             lockForm();
         }
