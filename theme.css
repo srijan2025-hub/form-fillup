@@ -1,0 +1,117 @@
+/* Theme Switcher Styling */
+.theme-switcher {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 15px;
+    padding: 8px 12px;
+    background: #f8f9fa;
+    border-radius: 6px;
+    border: 1px solid #dee2e6;
+}
+.theme-switcher select {
+    padding: 5px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+/* =========================================
+   1. DARK MODE 🌙
+   ========================================= */
+body.theme-dark { background-color: #121212; }
+body.theme-dark .container { background: #1e1e1e; box-shadow: 0 4px 15px rgba(0,0,0,0.5); border: none; }
+body.theme-dark h2, body.theme-dark h4 { color: #f1f1f1; border-color: #444; }
+body.theme-dark label { color: #ccc; }
+body.theme-dark input { background-color: #2c2c2c; color: #fff; border: 1px solid #444; }
+body.theme-dark input:disabled { background-color: #1a1a1a; color: #777; }
+body.theme-dark .profile-manager { background: #2c2c2c; border-color: #444; }
+body.theme-dark .profile-manager select { background: #1e1e1e; color: #fff; border-color: #555; }
+body.theme-dark .theme-switcher { background: #2c2c2c; border-color: #444; color: #fff;}
+body.theme-dark .theme-switcher select { background: #1e1e1e; color: #fff; }
+body.theme-dark .sticky-bottom { background: #1e1e1e; border-color: #444; }
+
+/* =========================================
+   2. OCEAN THEME 🌊
+   ========================================= */
+body.theme-ocean { background-color: #e0f7fa; }
+body.theme-ocean .container { background: #ffffff; border: 2px solid #b2ebf2; }
+body.theme-ocean h3 { background: #0097a7; }
+body.theme-ocean h2 { color: #006064; }
+body.theme-ocean input:focus { outline: 2px solid #0097a7; }
+body.theme-ocean .btn-primary { background-color: #0097a7; }
+body.theme-ocean .copy-btn { background: linear-gradient(135deg, #4dd0e1, #00acc1); }
+
+/* =========================================
+   3. HACKER THEME 💻
+   ========================================= */
+body.theme-hacker { background-color: #000000; font-family: "Courier New", Courier, monospace;}
+body.theme-hacker .container { background: #0a0a0a; border: 1px solid #00ff00; box-shadow: 0 0 10px #00ff00; }
+body.theme-hacker h2, body.theme-hacker h4 { color: #00ff00; border-color: #005500; }
+body.theme-hacker h3 { background: #004400; color: #00ff00; border: 1px solid #00ff00; }
+body.theme-hacker label { color: #00cc00; }
+body.theme-hacker input { background-color: #000; color: #00ff00; border: 1px solid #005500; font-family: "Courier New"; }
+body.theme-hacker input:focus { outline: 2px solid #00ff00; }
+body.theme-hacker input:disabled { background-color: #050505; color: #005500; }
+body.theme-hacker .profile-manager, body.theme-hacker .theme-switcher { background: #050505; border-color: #005500; color: #00ff00;}
+body.theme-hacker .profile-manager select, body.theme-hacker .theme-switcher select { background: #000; color: #00ff00; border-color: #00ff00;}
+body.theme-hacker .sticky-bottom { background: #0a0a0a; border-color: #005500; }
+body.theme-hacker .btn-primary { background-color: #00aa00; color: #000;}
+body.theme-hacker .btn-secondary { background-color: #444; color: #fff; }
+body.theme-hacker .copy-btn { background: #00aa00; border-radius: 4px; color: #000;}
+
+/* =========================================
+   4. SUNSET THEME 🌅
+   ========================================= */
+body.theme-sunset { background: linear-gradient(to right, #ff7e5f, #feb47b); background-attachment: fixed;}
+body.theme-sunset .container { background: #fffcf9; border-radius: 12px; border: none;}
+body.theme-sunset h3 { background: linear-gradient(to right, #ff512f, #dd2476); }
+body.theme-sunset h2 { color: #d81b60; }
+body.theme-sunset .copy-btn { background: linear-gradient(135deg, #ff512f, #f09819); }
+body.theme-sunset .btn-primary { background: linear-gradient(to right, #ff512f, #dd2476); border: none;}
+
+/* =========================================
+   5. NEON CYBERPUNK 🟣
+   ========================================= */
+body.theme-neon { background-color: #0d0221; }
+body.theme-neon .container { background: #160f29; border: 1px solid #ff00ff; box-shadow: 0 0 15px #ff00ff; color: #00ffff;}
+body.theme-neon h2, body.theme-neon h4 { color: #00ffff; border-color: #ff00ff; }
+body.theme-neon h3 { background: #261c3a; color: #ff00ff; border: 1px solid #00ffff; box-shadow: inset 0 0 10px rgba(0,255,255,0.2);}
+body.theme-neon label { color: #ffeb3b; }
+body.theme-neon input { background-color: #0a0514; color: #fff; border: 1px solid #ff00ff; }
+body.theme-neon input:focus { outline: 2px solid #00ffff; box-shadow: 0 0 8px #00ffff;}
+body.theme-neon input:disabled { background-color: #1a1a2e; color: #888; border-color: #444;}
+body.theme-neon .profile-manager, body.theme-neon .theme-switcher { background: #0a0514; border-color: #ff00ff; color: #00ffff;}
+body.theme-neon .profile-manager select, body.theme-neon .theme-switcher select { background: #160f29; color: #00ffff; border-color: #00ffff;}
+body.theme-neon .sticky-bottom { background: #160f29; border-top: 1px solid #ff00ff; }
+body.theme-neon .btn-primary { background-color: #ff00ff; color: #fff; box-shadow: 0 0 10px #ff00ff;}
+body.theme-neon .copy-btn { background: #00ffff; color: #000; border-radius: 4px; box-shadow: 0 0 8px #00ffff;}
+
+/* =========================================
+   6. FOREST RETREAT 🌲
+   ========================================= */
+body.theme-forest { background-color: #2c3e2d; }
+body.theme-forest .container { background: #fdfbf7; border-top: 6px solid #4a7c59; }
+body.theme-forest h2 { color: #2c3e2d; }
+body.theme-forest h3 { background: #4a7c59; color: white; }
+body.theme-forest label { color: #4a7c59; }
+body.theme-forest input:focus { outline: 2px solid #4a7c59; }
+body.theme-forest .profile-manager, body.theme-forest .theme-switcher { background: #e8ede9; border-color: #cdd9d0; }
+body.theme-forest .btn-primary { background-color: #4a7c59; }
+body.theme-forest .copy-btn { background: #6b8e23; border-radius: 8px;}
+
+/* =========================================
+   7. COFFEE SHOP ☕
+   ========================================= */
+body.theme-coffee { background-color: #dfd3c3; }
+body.theme-coffee .container { background: #f8ede3; border: 1px solid #c5a880; box-shadow: 5px 5px 15px rgba(139, 115, 85, 0.2); }
+body.theme-coffee h2, body.theme-coffee h4 { color: #5e4b3c; border-color: #c5a880; }
+body.theme-coffee h3 { background: #8d6e63; color: #fff; }
+body.theme-coffee label { color: #795548; }
+body.theme-coffee input { border: 1px solid #c5a880; background: #fffcf9; color: #3e2723;}
+body.theme-coffee input:focus { outline: 2px solid #8d6e63; }
+body.theme-coffee .profile-manager, body.theme-coffee .theme-switcher { background: #dfd3c3; border-color: #c5a880; color: #5e4b3c;}
+body.theme-coffee .btn-primary { background-color: #6d4c41; }
+body.theme-coffee .copy-btn { background: #a1887f; }
