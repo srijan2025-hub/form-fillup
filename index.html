@@ -13,16 +13,33 @@
     <h2>Master Details Hub</h2>
 
     <div class="theme-switcher">
-        <label for="themeSelect">🎨 Theme:</label>
+        <label for="themeSelect">🎨 Style:</label>
         <select id="themeSelect" onchange="changeTheme()">
-            <option value="theme-default">Light (Default)</option>
-            <option value="theme-dark">🌙 Dark Mode</option>
-            <option value="theme-ocean">🌊 Ocean</option>
-            <option value="theme-hacker">💻 Hacker</option>
-            <option value="theme-sunset">🌅 Sunset</option>
-            <option value="theme-neon">🟣 Neon Cyberpunk</option>
-            <option value="theme-forest">🌲 Forest Retreat</option>
-            <option value="theme-coffee">☕ Coffee Shop</option>
+            <optgroup label="Classic">
+                <option value="theme-default">Light (Default)</option>
+                <option value="theme-dark">🌙 Dark Mode</option>
+            </optgroup>
+            <optgroup label="✨ Animated">
+                <option value="theme-ai">✨ Google AI Neon</option>
+                <option value="theme-lava">🌋 Moving Lava</option>
+                <option value="theme-galaxy">🌌 Deep Galaxy</option>
+            </optgroup>
+            <optgroup label="Vibrant">
+                <option value="theme-ocean">🌊 Ocean</option>
+                <option value="theme-sunset">🌅 Sunset</option>
+                <option value="theme-neon">🟣 Neon Cyberpunk</option>
+            </optgroup>
+            <optgroup label="Aesthetic">
+                <option value="theme-glass">💎 Glassmorphism</option>
+                <option value="theme-clay">☁️ Soft Clay</option>
+                <option value="theme-nordic">❄️ Nordic Snow</option>
+                <option value="theme-retro">📺 80s Retro</option>
+                <option value="theme-luxury">👑 Midnight Gold</option>
+                <option value="theme-forest">🌲 Forest Retreat</option>
+                <option value="theme-coffee">☕ Coffee Shop</option>
+                <option value="theme-cherry">🌸 Cherry Blossom</option>
+                <option value="theme-vampire">🧛 Gothic Blood</option>
+            </optgroup>
         </select>
     </div>
     
