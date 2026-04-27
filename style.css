@@ -109,3 +109,4 @@ input:disabled { background-color: #f8f9fa; color: #6c757d; }
 @media (max-width: 500px) {
     .grid-2 { grid-template-columns: 1fr; }
 }
+w
